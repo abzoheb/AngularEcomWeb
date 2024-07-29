@@ -1,0 +1,166 @@
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3" *ngIf="regForm">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">Registration Form</h3>
+                        <form [formGroup]="signUpform" (ngSubmit)="onSubmitSignUp()">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="mobNo">Mobile Number</label>
+                                <input type="text" class="form-control" formControlName="mobNumber" id="mobNo"
+                                    placeholder="Enter your mobile number">
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label for="age">Age</label>
+                                    <input type="number" class="form-control" id="age" formControlName="age" placeholder="Enter your age">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="DOB">Date of Birth</label>
+                                    <input type="date" class="form-control" id="DOB" formControlName="dob">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter your email">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" minlength="6" formControlName="password"
+                                        placeholder="Enter your password more the 8 digit">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address1">Address 1</label>
+                                <input type="text" class="form-control" id="address1" formControlName="address1" placeholder="Enter your address">
+                            </div>
+                            <div class="form-group">
+                                <label for="address2">Address 2</label>
+                                <input type="text" class="form-control" id="address2" formControlName="address2"
+                                    placeholder="Enter additional address info">
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label for="state">State</label>
+                                    <select id="state" formControlName="state" class="form-control">
+                                        <option selected>Choose...</option>
+                                        <option>State 1</option>
+                                        <option>State 2</option>
+                                        <option>State 3</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="city">City</label>
+                                    <input type="text" class="form-control" id="city" formControlName="city" placeholder="Enter your city">
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    <label for="zip">Zip Code</label>
+                                    <input type="text" class="form-control" id="zip" formControlName="zipCode" placeholder="Zip code">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="language">Language</label>
+                                <select id="language" class="form-control" formControlName="language">
+                                    <option selected>ENGLISH</option>
+                                    <option>HINDI</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="male" formControlName="gender" value="Male" >
+                                    <label class="form-check-label" for="male">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="female" formControlName="gender"
+                                        value="Female">
+                                    <label class="form-check-label" for="female">
+                                        Female
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="other" formControlName="gender" value="Other">
+                                    <label class="form-check-label" for="other">
+                                        Other
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="about">About You</label>
+                                <textarea class="form-control" id="about" formControlName="aboutYou" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="uploadPhoto">Upload Your Photo</label>
+                                <input type="file" class="form-control-file" id="uploadPhoto" formControlName="upLoadPhoto">
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="terms" formControlName="agreetc">
+                                <label class="form-check-label" for="terms">I agree to the terms and conditions</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="role">What do you want to be?</label>
+                                <select class="form-control" id="role" formControlName="role">
+                                    <option selected>Buyer</option>
+                                    <option>Seller</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </form>
+                        <!-- <p routerlink="/sign-in" class="sim-pointer"> Already have an account click here to login</p> -->
+                        <p class="text-center mt-3">
+                            Don't have an account? 
+                            <a href="/sign-in" class="btn btn-link">Click here to Register</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Login Form -->
+
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3" *ngIf="!regForm">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">Login Form</h3>
+                                <form name="form" #tf="ngForm" (ngSubmit)="tf.form.valid && onSubmitSignIn()" novalidate>
+                                    <div class="form-group">
+                                        <label for="userEmail">Email</label>
+                                        <input type="email" class="form-control" id="userEmail" name="userEmail" 
+                                            placeholder="Enter your email" [(ngModel)]="signInFormValue.userEmail" #userEmail="ngModel" required>
+                                     </div>
+                                    <div class="form-group">
+                                        <label for="userPassword">Password</label>
+                                        <input type="password" class="form-control" id="userPassword" name="userPassword"
+                                            placeholder="Enter your password" [(ngModel)]="signInFormValue.userPassword" minlength="6" #userPassword="ngModel"  >
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-primary">Login</button>
+                                    </div>
+                                </form>
+                                <!-- <p routerlink="/sign-up" class="sim-pointer"> don't have an account click here to Register</p> -->
+                                <p class="text-center mt-3">
+                                    Don't have an account? 
+                                    <a href="/sign-up " class="btn btn-link">Click here to Register</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
